@@ -4,7 +4,8 @@
 --->
 
 
-![](https://s3.amazonaws.com/videos.pentesteracademy.com/videos/badges/low/arm-assembly.png)
+![LogoOrejitas](https://github.com/tectijuana/24b3expot2arm32-orejitas-chismosas/assets/105814833/de2e6f64-3188-447f-b597-796ba6ceefb5)
+
 
 Borrar y modificar README
 
@@ -59,7 +60,10 @@ Título del trabajo:
 Ejercicios ......
 
 Estudiante:
-.......
+Bernal Enciso Jocelin Maribel
+Díaz Zavala Ximena Michelle
+Gonzalez Carrillo Valeri Alexandra
+Sánchez Hernández Evelyn Belén
 
 	</p>
 
