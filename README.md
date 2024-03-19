@@ -57,7 +57,7 @@ Unidad:
 1
 
 Título del trabajo:
-Ejercicios ......
+Exposición, tema 2; Estructura básica de un programa en Assembly y ciclo de compilación
 
 Estudiante:
 Bernal Enciso Jocelin Maribel
