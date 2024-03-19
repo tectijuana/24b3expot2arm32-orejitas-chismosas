@@ -136,3 +136,30 @@ ENTREGA:
 	</p>
 
 </pre>
+# Estructura Básica de un Programa en Assembly y Ciclo de Compilación
+## Introducción
+
+Este documento explora los fundamentos de la programación en Assembly, incluyendo la estructura típica de un programa, las secciones clave, etiquetas e instrucciones. Además, se detalla el proceso de compilación y enlazado, culminando con la creación de un Makefile simple para automatizar estas tareas. Como ejemplo práctico, se presenta un programa que realiza operaciones aritméticas básicas.
+
+## Marco Teórico
+
+### Anatomía de un Programa en Assembly
+
+Un programa en Assembly se compone generalmente de tres secciones principales:
+
+- **Sección de Datos (`data`):** Donde se declaran todas las variables y constantes.
+- **Sección de Código (`text`):** Contiene el conjunto de instrucciones que serán ejecutadas por el procesador.
+- **Sección BSS (`bss`):** Utilizada para declarar variables sin inicializar que el programa utilizará.
+
+Las **etiquetas** sirven como referencias a ciertas partes del código o datos, facilitando su manejo. Las **instrucciones** son los comandos efectivos que el procesador ejecutará.
+
+### Proceso de Compilación y Enlazado
+
+El desarrollo de un programa en Assembly involucra varios pasos:
+
+1. **Compilación:** Traducción del código Assembly a código máquina, generando un archivo objeto.
+2. **Enlazado:** Combina archivos objeto y bibliotecas en un ejecutable, resolviendo referencias externas.
+
+### Creación de un Makefile Simple
+
+Un `Makefile` automatiza la compilación y el enlazado, simplificando el proceso de desarrollo. Se presenta un ejemplo básico para compilar y enlazar un programa en Assembly.
