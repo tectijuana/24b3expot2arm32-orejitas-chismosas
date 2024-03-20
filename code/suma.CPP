@@ -1,3 +1,11 @@
+@Objetivo:
+	@ Realizar la suma de dos numeros
+@Autores:
+	@ Bernal Enciso Jocelin Maribel
+	@ Díaz Zavala Ximena Michelle
+	@ Gonzalez Carrillo Valeri Alexandra
+	@ Sánchez Hernández Evelyn Belén
+
 .global sumar
 .type sumar, %function
 
