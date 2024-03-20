@@ -94,11 +94,16 @@ Un programa en Assembly para ARM32 se compone generalmente de varias secciones i
 
 
 ### Proceso de Compilación y Enlazado en ARM32
+1. **Preprocesamiento**: Antes de la compilación real, el preprocesador maneja directivas como `#include`, `#define`, y otras macros. Para el lenguaje ensamblador, esto puede incluir la resolución de macros y la inclusión de archivos de código.
 
-El desarrollo de software en Assembly para ARM32 sigue un proceso de compilación y enlazado para transformar el código fuente en un ejecutable:
+2. **Compilación**: El compilador de ensamblador toma el código fuente y lo convierte en instrucciones de máquina en formato binario. Cada instrucción se traduce a una operación binaria entendida por el procesador ARM. Se produce un archivo objeto (`.o` o `.obj`).
 
-1. **Compilación:** Traduce el código Assembly a código máquina, generando archivos objeto.
-2. **Enlazado:** Combina los archivos objeto en un archivo ejecutable, resolviendo referencias a librerías y otros módulos.
+3. **Ensamblado**: Técnicamente, ensamblar es convertir las instrucciones mnemónicas en código de máquina.
+
+4. **Enlazado (Linking)**: El enlazador combina los archivos objeto en un único archivo ejecutable y resuelve las referencias entre símbolos. Integra librerías necesarias en este punto, resultando en un binario ejecutable (`.elf`, `.bin`, etc.).
+
+5. **Carga (Loading)**: El último paso es cargar el programa en la memoria de un dispositivo ARM para su ejecución. No es parte del proceso de compilación y enlazado, pero es esencial para la ejecución del programa.
+
 
 ### Creación de un Makefile Simple
 Un Makefile es un archivo utilizado por el programa make, una herramienta de automatización de compilación ampliamente utilizada en el desarrollo de software. Define un conjunto de tareas a ser ejecutadas para construir y gestionar proyectos de software. Un Makefile contiene reglas que especifican cómo generar archivos objetivo a partir de archivos fuente. 
