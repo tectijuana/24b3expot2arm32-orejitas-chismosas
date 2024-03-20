@@ -73,6 +73,7 @@ El desarrollo de software en Assembly para ARM32 sigue un proceso de compilació
 2. **Enlazado:** Combina los archivos objeto en un archivo ejecutable, resolviendo referencias a librerías y otros módulos.
 
 ### Creación de un Makefile Simple
+Un Makefile es un archivo utilizado por el programa make, una herramienta de automatización de compilación ampliamente utilizada en el desarrollo de software. Define un conjunto de tareas a ser ejecutadas para construir y gestionar proyectos de software. Un Makefile contiene reglas que especifican cómo generar archivos objetivo a partir de archivos fuente. 
 
 Para automatizar el proceso de compilación y enlazado, se utiliza un `Makefile`. A continuación, se presenta un ejemplo de un Makefile básico para un proyecto en ARM32:
 
