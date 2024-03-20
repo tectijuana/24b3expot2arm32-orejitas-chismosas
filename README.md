@@ -105,7 +105,6 @@ Un programa en Assembly para ARM32 se compone generalmente de varias secciones i
    as -o archivo.o archivo.s
 
 3. **Ensamblado**: Técnicamente, ensamblar es convertir las instrucciones mnemónicas en código de máquina.
-   ```bash
 
 4. **Enlazado (Linking)**: El enlazador combina los archivos objeto en un único archivo ejecutable y resuelve las referencias entre símbolos. Integra librerías necesarias en este punto, resultando en un binario ejecutable (`.elf`, `.bin`, etc.).
    ```bash
