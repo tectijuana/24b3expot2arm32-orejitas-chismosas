@@ -115,27 +115,50 @@ Un programa en Assembly para ARM32 se compone generalmente de varias secciones i
 
 
 ### Creación de un Makefile Simple
-Un Makefile es un archivo utilizado por el programa make, una herramienta de automatización de compilación ampliamente utilizada en el desarrollo de software. Define un conjunto de tareas a ser ejecutadas para construir y gestionar proyectos de software. Un Makefile contiene reglas que especifican cómo generar archivos objetivo a partir de archivos fuente. 
-
-Para automatizar el proceso de compilación y enlazado, se utiliza un `Makefile`. A continuación, se presenta un ejemplo de un Makefile básico para un proyecto en ARM32:
+Un `Makefile` es un archivo utilizado por el programa make, una herramienta de automatización de compilación ampliamente utilizada en el desarrollo de software. Define un conjunto de tareas a ser ejecutadas para construir y gestionar proyectos de software. Un Makefile contiene reglas que especifican cómo generar archivos objetivo a partir de archivos fuente. 
+A continuación, se presenta un ejemplo de un `Makefile` básico para un proyecto en ARM32:
 
 ```makefile
-# Nombre del archivo ejecutable
-TARGET = mi_programa
+# Makefile para un proyecto de ARM32
 
-# Archivo fuente
-SOURCE = mi_programa.s
+# Definir el ensamblador y el enlazador
+AS = as
+LD = ld
+
+# Opciones del ensamblador: -g para información de depuración
+ASFLAGS = -g
+
+# Opciones del enlazador
+LDFLAGS =
+
+# Nombre del archivo final
+TARGET = programa
+
+# Fuente del ensamblador
+SOURCES = $(wildcard *.s)
+# Objetos que serán generados a partir de las fuentes
+OBJECTS = $(SOURCES:.s=.o)
 
 # Regla por defecto
 all: $(TARGET)
 
-# Cómo construir el ejecutable
-$(TARGET): $(SOURCE)
-    as -o $(TARGET).o $(SOURCE)
-    ld -o $(TARGET) $(TARGET).o
+# Cómo construir el objetivo final - enlazar los archivos objeto en el ejecutable
+$(TARGET): $(OBJECTS)
+	$(LD) $(LDFLAGS) -o $@ $^
 
-# Limpieza
+# Cómo construir los archivos objeto a partir de los archivos de ensamblador
+%.o: %.s
+	$(AS) $(ASFLAGS) -o $@ $<
+
+# Regla 'clean' para eliminar archivos generados
 clean:
-    rm -f $(TARGET) $(TARGET).o
+	rm -f $(OBJECTS) $(TARGET)
+
+# Regla 'debug' para iniciar un debug
+debug: $(TARGET)
+	gdb $(TARGET)
+
+.PHONY: all clean debug
+
 
 
