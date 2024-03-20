@@ -57,12 +57,41 @@ Este documento ofrece una visión detallada de los fundamentos de la programaci�
 Un programa en Assembly para ARM32 se compone generalmente de varias secciones importantes, cada una con un propósito específico en la ejecución y organización del programa:
 
 - **Sección de Datos (`data`):** Define variables y constantes utilizadas por el programa.
+  ```assembly
+  section .data
+  mensaje db 'Hola, mundo!', 0
+  
 - **Sección de Código (`text`):** Contiene las instrucciones ejecutables del programa.
+  ```assembly
+  section .text
+  global _start
+  _start:
+  ; Código para imprimir 'Hola, mundo!' y salir
+  
 - **Sección BSS (`bss`):** Se utiliza para declarar variables que serán inicializadas a cero al comienzo de la ejecución.
+  ```assembly
+  section .bss
+  reserva resb 50
+
 - **Etiquetas y Símbolos:** Identificadores utilizados para marcar puntos específicos en el código o datos, tales como el inicio de funciones o bucles.
+  ```assembly
+  inicio:
+  ; Inicio del programa o una sección particular
+
 - **Instrucciones:** Comandos que el procesador ARM ejecutará, incluyendo operaciones aritméticas, manipulación de datos, y control de flujo.
+  ```assembly
+  MOV R0, #1      ; Mueve el valor 1 al registro R0
+  ADD R1, R2, R3  ; Suma R2 y R3, resultado en R1
+
 - **Directivas del Ensamblador:** Instrucciones para el ensamblador que ayudan a organizar el proceso de compilación y definir macros.
+  ```assembly
+  .macro miMacro  ; Inicia definición de macro
+  .endm           ; Finaliza definición de macro
+
 - **Comentarios**: Texto que proporciona explicaciones sobre el código, ignorado durante la compilación.
+  ```assembly
+  ; Esto es un comentario en el código
+
 
 ### Proceso de Compilación y Enlazado en ARM32
 
