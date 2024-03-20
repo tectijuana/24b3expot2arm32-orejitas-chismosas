@@ -136,30 +136,55 @@ ENTREGA:
 	</p>
 
 </pre>
-# Estructura Básica de un Programa en Assembly y Ciclo de Compilación
+# Estructura Básica de un Programa en Assembly y Ciclo de Compilación para ARM32
+
 ## Introducción
 
-Este documento explora los fundamentos de la programación en Assembly, incluyendo la estructura típica de un programa, las secciones clave, etiquetas e instrucciones. Además, se detalla el proceso de compilación y enlazado, culminando con la creación de un Makefile simple para automatizar estas tareas. Como ejemplo práctico, se presenta un programa que realiza operaciones aritméticas básicas.
+Este documento ofrece una visión detallada de los fundamentos de la programación en Assembly para la arquitectura ARM32, cubriendo desde la estructura típica de un programa hasta el proceso completo de compilación y enlazado. Adicionalmente, se incluye una guía para la creación de un Makefile simple, con el fin de automatizar estas tareas en el desarrollo del software.
 
 ## Marco Teórico
 
-### Anatomía de un Programa en Assembly
+### Anatomía de un Programa en Assembly para ARM32
 
-Un programa en Assembly se compone generalmente de tres secciones principales:
+Un programa en Assembly para ARM32 se compone generalmente de varias secciones importantes, cada una con un propósito específico en la ejecución y organización del programa:
 
-- **Sección de Datos (`data`):** Donde se declaran todas las variables y constantes.
-- **Sección de Código (`text`):** Contiene el conjunto de instrucciones que serán ejecutadas por el procesador.
-- **Sección BSS (`bss`):** Utilizada para declarar variables sin inicializar que el programa utilizará.
+- **Sección de Datos (`data`):** Define variables y constantes utilizadas por el programa.
+- **Sección de Código (`text`):** Contiene las instrucciones ejecutables del programa.
+- **Sección BSS (`bss`):** Se utiliza para declarar variables que serán inicializadas a cero al comienzo de la ejecución.
 
-Las **etiquetas** sirven como referencias a ciertas partes del código o datos, facilitando su manejo. Las **instrucciones** son los comandos efectivos que el procesador ejecutará.
+#### Componentes Clave
 
-### Proceso de Compilación y Enlazado
+- **Etiquetas:** Identificadores utilizados para marcar puntos específicos en el código o datos.
+- **Instrucciones:** Comandos que el procesador ARM ejecutará, incluyendo operaciones aritméticas, manipulación de datos, y control de flujo.
 
-El desarrollo de un programa en Assembly involucra varios pasos:
+### Proceso de Compilación y Enlazado en ARM32
 
-1. **Compilación:** Traducción del código Assembly a código máquina, generando un archivo objeto.
-2. **Enlazado:** Combina archivos objeto y bibliotecas en un ejecutable, resolviendo referencias externas.
+El desarrollo de software en Assembly para ARM32 sigue un proceso de compilación y enlazado para transformar el código fuente en un ejecutable:
+
+1. **Compilación:** Traduce el código Assembly a código máquina, generando archivos objeto.
+2. **Enlazado:** Combina los archivos objeto en un archivo ejecutable, resolviendo referencias a librerías y otros módulos.
 
 ### Creación de un Makefile Simple
 
-Un `Makefile` automatiza la compilación y el enlazado, simplificando el proceso de desarrollo. Se presenta un ejemplo básico para compilar y enlazar un programa en Assembly.
+Para automatizar el proceso de compilación y enlazado, se utiliza un `Makefile`. A continuación, se presenta un ejemplo de un Makefile básico para un proyecto en ARM32:
+
+```makefile
+# Nombre del archivo ejecutable
+TARGET = mi_programa
+
+# Archivo fuente
+SOURCE = mi_programa.s
+
+# Regla por defecto
+all: $(TARGET)
+
+# Cómo construir el ejecutable
+$(TARGET): $(SOURCE)
+    as -o $(TARGET).o $(SOURCE)
+    ld -o $(TARGET) $(TARGET).o
+
+# Limpieza
+clean:
+    rm -f $(TARGET) $(TARGET).o
+
+
