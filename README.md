@@ -4,32 +4,7 @@
 --->
 
 
-![](https://s3.amazonaws.com/videos.pentesteracademy.com/videos/badges/low/arm-assembly.png)
-
-Borrar y modificar README
-
-# Utilizar los dos directorios
-
-- code  - ahi depositar sus programas los ***archivos extensión *.s****  (Source File) algunos autores en x86 de ponen .asm y en otras plataformas ARM compatibles la extension *.s
-- Todo programa lleva su comentario en la parte de arriba, objetivo y nombre del programador minimo, como templete
-- images  - de haber algo de pantallas ahi se presentaran, su busca documentarlas en MARKDOWN el código es:
-
-``` ![](images/---archivo.jpg---) recordar que no lleva espacios```
-
-<!---
-  Los nombres de las imagenes no deben cambiar de preferenci el nombre del programa como:  KIOSKO.cpp (su pantallas serian KISOCO.jpg, KIOSCO-1.jpg, KIOSCO-2.jpg ... )
-  Y asi procurar estar agrupados.
---->
-
-
-
-- Programa en MarkDown es inicia con tres tildes * (`) sin espacio, seguido de el lenguaje de programacion, al final del codigo se poner otra vez los mismos tilder..
-
-No se usan espacios en nombres de archivos, usar los nombres estilo camelCase (primera palabra minusculas, mayuscula solo la 1ra letra de cada palabra subsecuente):  ejemplo: sensorHumo, etc.
-
-Suerte.
-
-
+![LogoOrejitas](https://github.com/tectijuana/24b3expot2arm32-orejitas-chismosas/assets/105814833/de2e6f64-3188-447f-b597-796ba6ceefb5)
 
 ------
 
@@ -56,79 +31,134 @@ Unidad:
 1
 
 Título del trabajo:
-Ejercicios ......
+Exposición, tema 2; Estructura básica de un programa en Assembly y ciclo de compilación
 
 Estudiante:
-.......
+Bernal Enciso Jocelin Maribel
+Díaz Zavala Ximena Michelle
+Gonzalez Carrillo Valeri Alexandra
+Sánchez Hernández Evelyn Belén
 
 	</p>
 
 </pre>
+------
 
-<pre>
+# Estructura Básica de un Programa en Assembly y Ciclo de Compilación para ARM32
 
-	<p align=left>
+## Introducción
 
-Repositorio en el cual se desarrollaron distintos ejercicios en el lenguaje de 
-programacion c++, tomados del libro "Problemas para resolver con computadora" 
-1ra edicion (1985), por el autor Donald D. Spencer. 
+Este documento ofrece una visión detallada de los fundamentos de la programación en Assembly para la arquitectura ARM32, cubriendo desde la estructura típica de un programa hasta el proceso completo de compilación y enlazado. Adicionalmente, se incluye una guía para la creación de un Makefile simple, con el fin de automatizar estas tareas en el desarrollo del software.
 
-Los ejercicios corresponden al capitulo 6 del libro, entre las paginas 77 a 86.
-Se realizaron 25 problemas debido a la entrega fuera del limite de tiempo.
+## Marco Teórico
 
-CONDICIONES:
+### Anatomía de un Programa en Assembly para ARM32
 
-	EXTEMPORÁNEOS DE LA FECHA DE ENTREGA, despues del 25 de marzo y 1 segundo:
+Un programa en Assembly para ARM32 se compone generalmente de varias secciones importantes, cada una con un propósito específico en la ejecución y organización del programa:
 
-	-Solo 25 problemas a resolver y están en aleatorio las condiciones de uso, 
-		algunos simples otros de recordar, etc. CAPITULO 6 en adelante.
+- **Sección de Datos (`data`):** Define variables y constantes utilizadas por el programa.
+  ```assembly
+  section .data
+  mensaje db 'Hola, mundo!', 0
+  
+- **Sección de Código (`text`):** Contiene las instrucciones ejecutables del programa.
+  ```assembly
+  section .text
+  global _start
+  _start:
+  ; Código para imprimir 'Hola, mundo!' y salir
+  
+- **Sección BSS (`bss`):** Se utiliza para declarar variables que serán inicializadas a cero al comienzo de la ejecución.
+  ```assembly
+  section .bss
+  reserva resb 50
 
-	-Agregar las indicaciones de los criterios de la rùbrica
-	
-RÚBRICA:
+- **Etiquetas y Símbolos:** Identificadores utilizados para marcar puntos específicos en el código o datos, tales como el inicio de funciones o bucles.
+  ```assembly
+  inicio:
+  ; Inicio del programa o una sección particular
 
-        Todo problema es necesario siga el templete OBLIGATORIO para entregar el 
-		problema codificado, usted puede correr sus programas con su estilo 
-		pero ya que este funcionando, debe arreglarlo a presentación para su 
-		evaluación.
+- **Instrucciones:** Comandos que el procesador ARM ejecutará, incluyendo operaciones aritméticas, manipulación de datos, y control de flujo.
+  ```assembly
+  MOV R0, #1      ; Mueve el valor 1 al registro R0
+  ADD R1, R2, R3  ; Suma R2 y R3, resultado en R1
 
-        MODIFICAR LA PORTADA CON MARKDOWN Y ACTUALIZARLA, esta libre de cambiar 
-		todo.
-        Los archivos deben tener su extensión .CPP (no .txt, etc.)
+- **Directivas del Ensamblador:** Instrucciones para el ensamblador que ayudan a organizar el proceso de compilación y definir macros.
+  ```assembly
+  .macro miMacro  ; Inicia definición de macro
+  .endm           ; Finaliza definición de macro
 
-	Los problemas están en la relación siguiente:
-	
-	- 100% Sigue el templete proporcionado por el docente y corren 10 
-		Problemas (o si incremento en programas por supuesta dificultad) 
-		completamente en GITHUB Classroom (no repositorio personal),  los 
-		archivos deben tener su extensión .CPP (no .txt, .EXE, etc.) acomodados 
-		en dentro de un directorio  (sin acentos o simbolos) SOLO FUENTES, y 
-		modifica el README.md que sea una portada.
-	- 80% Sigue el templete proporcionado por el docente y corre 8 Problemas 
-		(o si incremento en programas por supuesta dificultad) completamente 
-		en GITHUB Classroom (no repositorio personal), los archivos deben 
-		tener su extensión .CPP (no .txt, etc.) acomodados en dentro de un 
-		directorio (sin acentos o simbolos) SOLO FUENTES, y modifica el 
-		README.md que sea una portada.
-	- 70% Sigue el templete proporcionado por el docente y corre 7 Problemas 
-		(o si incremento en programas por supuesta dificultad) completamente 
-		en GITHUB Classroom (no repositorio personal), los archivos deben 
-		tener su extensión .CPP (no .txt, etc.) acomodados en dentro de un 
-		directorio (sin acentos o simbolos) SOLO FUENTES, y modifica el 
-		README.md que sea una portada.
-	- 50 % EVITA Y NO USA el templete proporcionado por el docente sus Problemas 
-		(o si incremento en programas por supuesta dificultad) completamente 
-		en GITHUB Classroom (no repositorio personal) con mas de 7 problemas 
-		resueltos, los archivos NO tener su extensión .CPP y  puede o no estar 
-		acomodados en dentro de un directorio (sin acentos o simbolos) 
-		SOLO FUENTES, y modifica el README.md que sea una portada.
+- **Comentarios**: Texto que proporciona explicaciones sobre el código, ignorado durante la compilación.
+  ```assembly
+  ; Esto es un comentario en el código
 
-ENTREGA:
 
-	URL del GitHub Classroom, y recuerde arreglar la PORTADA, quitar todos los 
-		elementos extras del templete, acomodarlo bien para su presentación 
-		solo lo necesario.
+### Proceso de Compilación y Enlazado en ARM32
+1. **Preprocesamiento**: Antes de la compilación real, el preprocesador maneja directivas como `#include`, `#define`, y otras macros. Para el lenguaje ensamblador, esto puede incluir la resolución de macros y la inclusión de archivos de código.
+   ```assembly
+   ; Ejemplo de una directiva de preprocesador en código ensamblador
+   %include "common_macros.inc"
 
-	</p>
+2. **Compilación**: El compilador de ensamblador toma el código fuente y lo convierte en instrucciones de máquina en formato binario. Cada instrucción se traduce a una operación binaria entendida por el procesador ARM. Se produce un archivo objeto (`.o` o `.obj`).
+   ```bash
+   # Ejemplo de compilación de un archivo de ensamblador ARM
+   as -o archivo.o archivo.s
 
-</pre>
+3. **Ensamblado**: Técnicamente, ensamblar es convertir las instrucciones mnemónicas en código de máquina.
+
+4. **Enlazado (Linking)**: El enlazador combina los archivos objeto en un único archivo ejecutable y resuelve las referencias entre símbolos. Integra librerías necesarias en este punto, resultando en un binario ejecutable (`.elf`, `.bin`, etc.).
+   ```bash
+   # Ejemplo de enlazado de archivos objeto en un ejecutable ARM
+   ld -o ejecutable.elf archivo.o
+
+6. **Carga (Loading)**: El último paso es cargar el programa en la memoria de un dispositivo ARM para su ejecución. No es parte del proceso de compilación y enlazado, pero es esencial para la ejecución del programa.
+
+
+### Creación de un Makefile Simple
+Un `Makefile` es un archivo utilizado por el programa make, una herramienta de automatización de compilación ampliamente utilizada en el desarrollo de software. Define un conjunto de tareas a ser ejecutadas para construir y gestionar proyectos de software. Un Makefile contiene reglas que especifican cómo generar archivos objetivo a partir de archivos fuente. 
+A continuación, se presenta un ejemplo de un `Makefile` básico para un proyecto en ARM32:
+
+```makefile
+# Makefile para un proyecto de ARM32
+
+# Definir el ensamblador y el enlazador
+AS = as
+LD = ld
+
+# Opciones del ensamblador: -g para información de depuración
+ASFLAGS = -g
+
+# Opciones del enlazador
+LDFLAGS =
+
+# Nombre del archivo final
+TARGET = programa
+
+# Fuente del ensamblador
+SOURCES = $(wildcard *.s)
+# Objetos que serán generados a partir de las fuentes
+OBJECTS = $(SOURCES:.s=.o)
+
+# Regla por defecto
+all: $(TARGET)
+
+# Cómo construir el objetivo final - enlazar los archivos objeto en el ejecutable
+$(TARGET): $(OBJECTS)
+	$(LD) $(LDFLAGS) -o $@ $^
+
+# Cómo construir los archivos objeto a partir de los archivos de ensamblador
+%.o: %.s
+	$(AS) $(ASFLAGS) -o $@ $<
+
+# Regla 'clean' para eliminar archivos generados
+clean:
+	rm -f $(OBJECTS) $(TARGET)
+
+# Regla 'debug' para iniciar un debug
+debug: $(TARGET)
+	gdb $(TARGET)
+
+.PHONY: all clean debug
+
+
+
