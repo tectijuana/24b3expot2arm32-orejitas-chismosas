@@ -22,6 +22,8 @@
 
 ![image](https://github.com/tectijuana/24b3expot2arm32-orejitas-chismosas/assets/158230632/40ce7fee-b0e3-451d-8dac-d599321eb760)
 
+## En gdb
+![image](https://github.com/tectijuana/24b3expot2arm32-orejitas-chismosas/assets/158230632/9cc3c258-cd3a-4b32-911c-d57a44eb0507)
 
 
 # Programa - Resta
